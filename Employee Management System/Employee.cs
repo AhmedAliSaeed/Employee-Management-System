@@ -12,7 +12,7 @@ namespace Employee_Management_System
        public string Name  { set ; get ;} 
         public int Age  { set ; get ;}
         public double Salary  { set ; get ;} 
-        public string Department  { set ; get ;}
+        public string Department { set ; get ;}
          public DateTime EmploymentDate { get; set;}
         
     public Employee( int id, string name, int age, double salary, string department, DateTime employmentDate)
