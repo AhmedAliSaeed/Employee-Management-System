@@ -43,7 +43,10 @@ namespace Employee_Management_System
             Console.WriteLine($"{Name} has been terminated from the company");
         }
 
-        
+        public override string ToString()
+    {
+        return $"Employee {{ Name = {Name}, Id = {Id}, Age = {Age}, Salary = {Salary}, Department ={Department},EmploymentDate ={EmploymentDate} }}";
+    }
            
     }
 }
