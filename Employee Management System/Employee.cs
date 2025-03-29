@@ -9,7 +9,7 @@ namespace Employee_Management_System
     class Employee
     {
      
-		private int id;
+				private int id;
 		private string name;
 		private int age;
 		private double salary;
@@ -64,7 +64,7 @@ namespace Employee_Management_System
 
 		public bool isTerminated { get; private set; } = false;
 
-		public Employee(int id, string name, int age, double salary, string department, DateTime employmentDate)
+		public Employee(int id, string name, int age, double salary, string department, DateTime employmentDate , List<int> performanceRatings)
 		{
 			Id = id;
 			Name = name;
@@ -72,11 +72,14 @@ namespace Employee_Management_System
 			Salary = salary;
 			Department = department;
 			EmploymentDate = employmentDate;
+			PerformanceRatings = performanceRatings ?? new List<int>();
 		}
 
 		public void Terminate()
 		{
 			isTerminated = true;
+			Console.WriteLine($"Employee {Name} has been terminated from the company");
+
 		}
 
 		public void AddPerformanceRating(int rating)
@@ -84,14 +87,19 @@ namespace Employee_Management_System
 			PerformanceRatings.Add(rating);
 		}
 
-		public void Promote(double salaryIncrement)
+		public void Promote()
 		{
 			double averageRating = PerformanceRatings.Count > 0 ? PerformanceRatings.Average() : 0;
-			int years = DateTime.Now.Year - EmploymentDate.Year;
+			int years = DateTime.Now.Year- EmploymentDate.Year;
+			if (DateTime.Now < EmploymentDate.AddYears(2))
+			{
+				Console.WriteLine($"Employee {Name} has not completed 2 full years of service.");
+				return;
+			}
 			if (averageRating > 8.0 && years >= 2)
 			{
-				Salary *= 1.1;
-				Console.WriteLine($"Employee {Name} has been promoted, new salary is {Salary}");
+				Salary = Math.Round(Salary * 1.1, 2);
+				Console.WriteLine($"Employee {Name} has been promoted, new salary is {Salary.ToString( CultureInfo.CurrentCulture)}");
 			}
 			else
 			{
@@ -123,6 +131,6 @@ namespace Employee_Management_System
 	}
 
 }
-           
-    }
+
+			
 }
