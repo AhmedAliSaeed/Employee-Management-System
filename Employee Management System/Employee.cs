@@ -45,7 +45,7 @@ namespace Employee_Management_System
 
         public override string ToString()
     {
-        return $"Employee {{ Name = {Name}, Id = {Id}, Age = {Age}, Salary = {Salary}, Department ={Department},EmploymentDate ={EmploymentDate} }}";
+        return $"Employee {{ Id = {Id},  Name = {Name},Age = {Age}, Salary = {Salary}, Department ={Department},EmploymentDate ={EmploymentDate} }}";
     }
            
     }
